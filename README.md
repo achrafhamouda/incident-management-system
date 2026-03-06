@@ -1,7 +1,6 @@
 # Incident Management System
 
 Projet microservices réalisé dans le module Génie Logiciel
-ENSA Beni Mellal 2026
 
 ## Architecture
 
