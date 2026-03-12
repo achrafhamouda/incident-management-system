@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Mon_Service_Perso",
+            "request": "launch",
+            "mainClass": "com.gestionincidents.incident_service.IncidentServiceApplication",
+            "env": {
+                "SPRING_DATASOURCE_URL": "jdbc:postgresql://localhost:5433/incidents_db",
+                "SPRING_DATASOURCE_USERNAME": "postgres",
+                "SPRING_DATASOURCE_PASSWORD": "hi2005ba"
+            }
+        }
+    ]
+}
