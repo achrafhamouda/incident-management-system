@@ -1,13 +1,14 @@
 package com.gestionincidents.incident_service.service;
 
-import com.gestionincidents.incident_service.model.Incident;
-import com.gestionincidents.incident_service.repository.IncidentRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
+
+import org.springframework.stereotype.Service;
+
+import com.gestionincidents.incident_service.model.Incident;
+import com.gestionincidents.incident_service.repository.IncidentRepository;
+
+import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
@@ -15,17 +16,14 @@ public class IncidentService {
 
     private final IncidentRepository incidentRepository;
 
-    // Ajout de la méthode save() pour correspondre à ton Controller
     public Incident save(Incident incident) {
         return incidentRepository.save(incident);
     }
 
-    // Ajout de la méthode findAll() pour correspondre à ton Controller
     public List<Incident> findAll() {
         return incidentRepository.findAll();
     }
 
-    // Garde createIncident pour la compatibilité
     public Incident createIncident(Incident incident) {
         return incidentRepository.save(incident);
     }
@@ -34,11 +32,13 @@ public class IncidentService {
         return incidentRepository.findAll();
     }
 
-    public Optional<Incident> getIncidentById(UUID id) {
+    // Changé UUID en Long ici
+    public Optional<Incident> getIncidentById(Long id) {
         return incidentRepository.findById(id);
     }
 
-    public Incident updateIncident(UUID id, Incident incidentDetails) {
+    // Changé UUID en Long ici
+    public Incident updateIncident(Long id, Incident incidentDetails) {
         Incident incident = incidentRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Incident non trouvé"));
         incident.setTitre(incidentDetails.getTitre());
@@ -49,7 +49,8 @@ public class IncidentService {
         return incidentRepository.save(incident);
     }
 
-    public void deleteIncident(UUID id) {
+    // Changé UUID en Long ici
+    public void deleteIncident(Long id) {
         incidentRepository.deleteById(id);
     }
 }

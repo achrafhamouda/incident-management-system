@@ -3,6 +3,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "EurekaServerApplication",
+            "request": "launch",
+            "mainClass": "com.sgi.eureka_server.EurekaServerApplication",
+            "projectName": "eureka-server"
+        },
+        {
+            "type": "java",
+            "name": "GatewayApplication",
+            "request": "launch",
+            "mainClass": "com.sgi.gateway.GatewayApplication",
+            "projectName": "gateway"
+        },
+        {
+            "type": "java",
             "name": "Mon_Service_Perso",
             "request": "launch",
             "mainClass": "com.gestionincidents.incident_service.IncidentServiceApplication",

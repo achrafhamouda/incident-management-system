@@ -1,20 +1,33 @@
 server:
-  port: 8888
+  port: 8080
 
 spring:
   application:
-    name: config-server
-
-  profiles:
-    active: native
-
+    name: gateway
+  main:
+    web-application-type: reactive
+  
   cloud:
-    config:
-      server:
-        native:
-          search-locations: file:///C:/Users/VICTUS/incident-management-system/config-repo
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: incident-service
+          uri: lb://incident-service
+          predicates:
+            - Path=/incidents/**
 
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          # On met une adresse bidon juste pour voir si ça démarre
+          issuer-uri: http://localhost:8180/realms/SGI-realm
+          jwk-set-uri: http://localhost:8180/realms/SGI-realm/protocol/openid-connect/certs
+
+# On désactive le contact avec Eureka temporairement pour isoler le problème
 eureka:
   client:
-    service-url:
-      defaultZone: http://eureka-server:8761/eureka
+    register-with-eureka: false
+    fetch-registry: false
